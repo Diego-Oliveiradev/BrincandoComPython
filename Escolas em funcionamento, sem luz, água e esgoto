@@ -1,0 +1,10 @@
+import requests
+
+url = 'http://educacao.dadosabertosbr.com/api/escolas/buscaavancada?'
+situação = 'situacaoFuncionamento=1&energiaInexistente=on&aguaInexistente=on&esgotoInexistente=on'
+data = requests.get(url + situação).json()
+print ('Primeiras 100 escolas:')
+for escola in data[1]:
+    print (f'{escola["nome"]}, {escola["cidade"]}, {escola["estado"]}')
+print ('Escolas em funcionamento, sem água, luz e esgoto:')
+print (data[0])
